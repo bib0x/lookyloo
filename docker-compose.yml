@@ -2,6 +2,7 @@ version: '3'
 services:
 
   redis-cache:
+    user: "$UREDIS:$GREDIS"
     image: redis
     working_dir: /cache
     command: ./cache.conf --daemonize no
@@ -9,6 +10,7 @@ services:
         - ./cache:/cache
 
   redis-indexing:
+    user: "$UREDIS:$GREDIS"
     image: redis
     working_dir: /indexing
     command: ./indexing.conf --daemonize no
